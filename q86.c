@@ -1,20 +1,27 @@
 //WAP TO CHECK IF A STRING IS A PALINDROME.
 #include <stdio.h>
+#include <string.h>
 
 int main() {
     char str[100];
-    int len = 0;
+    int i, len, flag = 0;
 
-    // Read string
-    scanf("%[^\n]", str);
+    printf("Enter a string: ");
+    gets(str);   // For simple assignments (unsafe but okay for beginners)
 
-    // Find length
-    while (str[len] != '\0') {
-        len++;
+    len = strlen(str);
+
+    for(i = 0; i < len / 2; i++) {
+        if(str[i] != str[len - i - 1]) {
+            flag = 1;
+            break;
+        }
     }
 
-    // Check palindrome
-    int i = 0, j = len - 1;
+    if(flag == 0)
+        printf("Palindrome\n");
+    else
+        printf("Not Palindrome\n");
 
-    while (i < j) {
-        if (str[i] != str[j
+    return 0;
+}
